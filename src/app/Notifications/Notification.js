@@ -1,5 +1,4 @@
 import * as _ from 'lodash';
-import { SnsService } from '../Services/Facades/SnsService';
 export const MANRILL = 'manrill';
 
 export class Notification {
@@ -7,13 +6,9 @@ export class Notification {
     this.notifiable = notifiable;
   }
 
- 
-
   async executeManrillTask() {
     this.toMandrill(this.notifiable).sendTemplate();
   }
-
-
 
   messageTransform(message) {
     const data = {
@@ -66,15 +61,6 @@ export class Notification {
   }
 
   execute() {
-    const methods = this.via();
-    _.forEach(methods, method => {
-      switch (method) {
-        case MANRILL:
-          this.executeManrillTask();
-          break;
-        default:
-          break;
-      }
-    });
+    this.executeManrillTask();
   }
 }
