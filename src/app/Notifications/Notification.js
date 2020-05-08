@@ -1,12 +1,12 @@
 import * as _ from 'lodash';
-export const MANRILL = 'manrill';
+export const MANDRILL = 'mandrill';
 
 export class Notification {
   setNotifiable(notifiable) {
     this.notifiable = notifiable;
   }
 
-  async executeManrillTask() {
+  async executeMandrillTask() {
     this.toMandrill(this.notifiable).sendTemplate();
   }
 
@@ -61,6 +61,6 @@ export class Notification {
   }
 
   execute() {
-    this.executeManrillTask();
+    this.executeMandrillTask();
   }
 }
